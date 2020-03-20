@@ -4,13 +4,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Build, Tag, Push
-        uses: mattdavis0351/actions/docker-gpr@v1
-        with:
-          repo-token: ${{ secrets.GH_TOKEN }}
-          image-name: noisy
-          dockerfile-location: /Dockerfile
-    # - uses: actions/checkout@master
-    # - name: Build the Docker image
-    #   run: docker build -t noisy:latest .
+    - uses: actions/checkout@master
+    - name: Build the Docker image
+      run: echo ${{ secrets.GH_TOKEN }} | docker login docker.pkg.github.com -u wayne-folkes --password-stdin && docker build -t docker.pkg.github.com/wayne-folkes/noisy-app/noisy:latest . && docker push docker.pkg.github.com/wayne-folkes/noisy-app/noisy:latest 
+
+
 

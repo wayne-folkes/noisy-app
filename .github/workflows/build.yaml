@@ -4,7 +4,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Build the Docker image
-      run: docker build -t noisy:latest .
+      - name: Build, Tag, Push
+        uses: mattdavis0351/actions/docker-gpr@v1
+        with:
+          repo-token: ${{ secrets.GH_TOKEN }}
+          image-name: noisy
+          dockerfile-location: /
+    # - uses: actions/checkout@master
+    # - name: Build the Docker image
+    #   run: docker build -t noisy:latest .
 

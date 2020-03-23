@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import logging
 import os
-from random import choice
+from random import choice, choices
 import sched
 import sys
 import time
@@ -16,13 +16,14 @@ EXCEPTION_TYPES = ['TypeError', 'NameError','ModuleNotFoundError']
 
 def make_errors():
     for n in range(0,choice(INTERVALS)):
-        log.error("{}: Houston, we have a problem".format(choice(EXCEPTION_TYPES)))
+        for exception in choices(EXCEPTION_TYPES,k=2):
+            log.error("{}: Houston, we have a problem".format(exception))
         time.sleep(1/choice(INTERVALS))
 
 def make_info():
     for n in range(0,choice(INTERVALS)):
         log.info("This is fine")
-        time.sleep(1)
+        time.sleep(0.25)
 
 def main():
     aws_lambda_logging.setup(

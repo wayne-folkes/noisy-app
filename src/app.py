@@ -11,7 +11,7 @@ import aws_lambda_logging
 log = logging.getLogger()
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
-INTERVALS = [1,5,10,15,30,60,90,120,150,180]
+INTERVALS = [1,5,10,15,30,60,90,120,150,180,240,300]
 EXCEPTION_TYPES = ['TypeError', 'NameError','ModuleNotFoundError']
 
 def make_errors():
@@ -22,7 +22,7 @@ def make_errors():
 def make_info():
     for n in range(0,choice(INTERVALS)):
         log.info("This is fine")
-        time.sleep(1/choice(INTERVALS))
+        time.sleep(1)
 
 def main():
     aws_lambda_logging.setup(

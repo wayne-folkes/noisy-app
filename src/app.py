@@ -21,7 +21,7 @@ def make_errors():
 
 def make_info():
     for n in range(0,choice(INTERVALS)):
-        log.error("This is fine")
+        log.info("This is fine")
         time.sleep(1)
 
 def main():

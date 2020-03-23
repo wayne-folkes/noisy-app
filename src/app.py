@@ -17,12 +17,12 @@ EXCEPTION_TYPES = ['TypeError', 'NameError','ModuleNotFoundError']
 def make_errors():
     for n in range(0,choice(INTERVALS)):
         log.error("{}: Houston, we have a problem".format(choice(EXCEPTION_TYPES)))
-        time.sleep(1)
+        time.sleep(1/choice(INTERVALS))
 
 def make_info():
     for n in range(0,choice(INTERVALS)):
         log.info("This is fine")
-        time.sleep(1)
+        time.sleep(1/choice(INTERVALS))
 
 def main():
     aws_lambda_logging.setup(

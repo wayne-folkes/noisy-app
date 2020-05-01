@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: noisy
 spec:
-  replicas: 3
+  replicas: 6
   selector:
     matchLabels:
       app: noisy
@@ -20,6 +20,3 @@ spec:
         image: docker.pkg.github.com/wayne-folkes/noisy-app/noisy:latest
       imagePullSecrets:
         - name: regcred
-
-
-#kubectl create secret docker-registry regcred --docker-server=docker.pkg.github.com --docker-username=wayne-folkes --docker-password=da065916a6abe85647c12b53f0a61aa291b7abf5 --docker-email=wayne.folkes@gmail.com

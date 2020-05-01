@@ -12,7 +12,7 @@ log = logging.getLogger()
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 INTERVALS = [1,5,10,15,30,60,90,120,150,180,240,300]
-EXCEPTION_TYPES = ['TypeError', 'NameError','ModuleNotFoundError']
+EXCEPTION_TYPES = ['TypeError', 'NameError','ModuleNotFoundError','DatabaseNotFoundError']
 
 def make_errors():
     for n in range(0,choice(INTERVALS)):

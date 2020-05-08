@@ -17,7 +17,7 @@ EXCEPTION_TYPES = ['TypeError', 'NameError','ModuleNotFoundError','DatabaseNotFo
 def make_errors():
     for n in range(0,choice(INTERVALS)):
         for exception in choices(EXCEPTION_TYPES,k=randint(1,len(EXCEPTION_TYPES))):
-            log.error("{}: Houston, we have a problem".format(exception))
+            log.error("{}: Uh oh something is wrong".format(exception))
         time.sleep(1/choice(INTERVALS))
 
 def make_info():

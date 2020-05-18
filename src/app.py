@@ -30,7 +30,7 @@ def make_warns():
 def make_fatals():
     for n in range(0,choice(INTERVALS)):
         for exception in choices(EXCEPTION_TYPES,k=randint(1,len(EXCEPTION_TYPES))):
-            log.fatal("{}: Uh oh something this is fatal".format(exception))
+            log.fatal("{}: This is fatal".format(exception))
         time.sleep(1/choice(INTERVALS))
 
 def make_info():

@@ -20,6 +20,13 @@ def make_errors():
             log.error("{}: Uh oh something is wrong".format(exception))
         time.sleep(1/choice(INTERVALS))
 
+def make_warns():
+    for n in range(0,choice(INTERVALS)):
+        for exception in choices(EXCEPTION_TYPES,k=randint(1,len(EXCEPTION_TYPES))):
+            log.warn("{}: This is a warn".format(exception))
+            log.warning("{}: This is a warning".format(exception))
+        time.sleep(1/choice(INTERVALS))
+
 def make_info():
     for n in range(0,choice(INTERVALS)):
         log.info("This is fine")
@@ -30,7 +37,7 @@ def main():
         level=os.environ.get('LOGLEVEL', 'INFO'),
         boto_level='CRITICAL'
     )
-    methods = [make_errors,make_errors,make_info]
+    methods = [make_errors,make_warns,make_info]
     s = sched.scheduler(time.time, time.sleep)
     while True:
         s.enter(0.5,1,choice(methods))

@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
+import calendar
+import datetime
 import logging
 import os
-from random import choice, choices, randint
 import sched
 import sys
 import time
-import datetime
-import calendar
+from builtins import SystemExit
+from random import choice, choices, randint
 
 import aws_lambda_logging
 from cachetools import TTLCache, cached
@@ -58,10 +59,14 @@ def main():
     )
     methods = [make_errors,make_warns,make_fatals,make_info]
     s = sched.scheduler(time.time, time.sleep)
+
     while True:
-        s.enter(0.5,1,choice(methods))
-        s.enter(0.5,1,choice(methods))
-        s.run()
+        try:
+            s.enter(0.5,1,choice(methods))
+            s.enter(0.5,1,choice(methods))
+            s.run()
+        except (KeyboardInterrupt, SystemExit) as e:
+            break
 
 if __name__ == "__main__":
     main()

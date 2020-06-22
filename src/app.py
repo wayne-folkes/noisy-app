@@ -36,7 +36,6 @@ def make_warns():
     day = find_day()
     for _ in range(0, choice(INTERVALS)):
         for exception in choices(EXCEPTION_TYPES, k=randint(1, len(EXCEPTION_TYPES))):
-            log.warn("{}: This is a warn - Today is {}".format(exception, day))
             log.warning("{}: This is a warning - Today is {}".format(exception, day))
         time.sleep(1/choice(INTERVALS))
 
